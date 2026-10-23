@@ -1,0 +1,15 @@
+.screen-height {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  height: auto;
+}
+
+.gradient {
+  background: #8548fe;
+  background: linear-gradient(
+    90deg,
+    rgba(133, 72, 254, 1) 0%,
+    rgba(109, 87, 199, 1) 50%,
+    rgba(72, 87, 254, 1) 100%
+  );
+}
