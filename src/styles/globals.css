@@ -8,6 +8,9 @@
 @import "./ui/footer.css";
 @import "./ui/scrollbar.css";
 
+/* Feature styles */
+@import "./features/neolenz.css";
+
 /* Shared theming engine: @theme inline mapping + base layer. No colors. */
 @import "./utils/animations.css";
 @import "./utils/base.css";

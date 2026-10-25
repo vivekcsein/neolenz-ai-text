@@ -1,9 +1,5 @@
-import HomePage from "@/components/features/home/HomePage";
+import { Neolenz } from "@/components/features/neolenz/Neolenz";
 
 export default function Home() {
-  return (
-    <div className="center">
-      <HomePage />
-    </div>
-  );
+  return <Neolenz />;
 }

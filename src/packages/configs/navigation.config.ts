@@ -11,33 +11,6 @@ export const mainNav: NavTab[] = [
   { id: "home", title: "Home", href: appConfig.routes.home },
   { id: "about", title: "About", href: appConfig.routes.about },
   {
-    id: "services",
-    title: "Services",
-    dropdown: [
-      {
-        category: "services",
-        items: [
-          {
-            label: "Web Development",
-            href: appConfig.routes.services.webDevelopment,
-          },
-          {
-            label: "Backend Development",
-            href: appConfig.routes.services.backend,
-          },
-          {
-            label: "Performance & SEO",
-            href: appConfig.routes.services.performanceSeo,
-          },
-          {
-            label: "Authentication & Security",
-            href: appConfig.routes.services.authenticationSecurity,
-          },
-        ],
-      },
-    ],
-  },
-  {
     id: "legal",
     title: "Legal",
     dropdown: [
@@ -58,24 +31,6 @@ export const footerNav: NavSection[] = [
     items: [
       { label: "Home", href: appConfig.routes.home },
       { label: "About", href: appConfig.routes.about },
-    ],
-  },
-  {
-    title: "Services",
-    items: [
-      {
-        label: "Web Development",
-        href: appConfig.routes.services.webDevelopment,
-      },
-      { label: "Backend & APIs", href: appConfig.routes.services.backend },
-      {
-        label: "Performance Optimization",
-        href: appConfig.routes.services.performanceSeo,
-      },
-      {
-        label: "Security & Authentication",
-        href: appConfig.routes.services.authenticationSecurity,
-      },
     ],
   },
   {

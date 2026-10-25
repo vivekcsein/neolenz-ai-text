@@ -1,0 +1,213 @@
+/*
+ * Neolenz feature styles: glowing frame, scan beam, grid and brackets.
+ * Everything animates transform or opacity only, and every colour falls
+ * back to a core theme token so other themes still render.
+ */
+
+.neolenz-frame {
+  --nz-blue: var(--neolenz-blue, var(--primary));
+  --nz-violet: var(--neolenz-violet, var(--accent));
+  --nz-cyan: var(--neolenz-cyan, var(--ring));
+
+  position: relative;
+  border-radius: 1rem;
+  isolation: isolate;
+  box-shadow:
+    0 24px 60px -28px color-mix(in oklab, var(--nz-blue) 60%, transparent),
+    0 0 40px -18px color-mix(in oklab, var(--nz-violet) 55%, transparent);
+}
+
+/* Gradient hairline border */
+.neolenz-frame::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: 2;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    var(--nz-blue),
+    var(--nz-violet) 55%,
+    var(--nz-cyan)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.neolenz-glass {
+  background: color-mix(
+    in oklab,
+    var(--neolenz-panel, var(--card)) 78%,
+    transparent
+  );
+  border: 1px solid
+    color-mix(in oklab, var(--neolenz-blue, var(--primary)) 28%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ---------- Scan layers (always clipped by their parent) ---------- */
+
+.neolenz-scan-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--nz-cyan) 22%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--nz-cyan) 22%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 35%, transparent);
+  mask-image: radial-gradient(ellipse at center, #000 35%, transparent);
+}
+
+.neolenz-scan-tint {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--nz-violet) 14%, transparent),
+    color-mix(in oklab, var(--nz-cyan) 10%, transparent)
+  );
+}
+
+.neolenz-scan-beam {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 26%;
+  transform: translate3d(0, -100%, 0);
+  animation: neolenz-scan 2.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    color-mix(in oklab, var(--nz-cyan) 14%, transparent) 65%,
+    color-mix(in oklab, var(--nz-cyan) 48%, transparent)
+  );
+  border-bottom: 2px solid var(--nz-cyan);
+  box-shadow: 0 10px 28px -6px
+    color-mix(in oklab, var(--nz-cyan) 70%, transparent);
+}
+
+@keyframes neolenz-scan {
+  from {
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    transform: translate3d(0, 385%, 0);
+  }
+}
+
+.neolenz-bracket {
+  position: absolute;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 0 solid var(--nz-cyan);
+  opacity: 0.9;
+  animation: neolenz-bracket 2s ease-in-out infinite;
+}
+.neolenz-bracket[data-pos="tl"] {
+  top: 0.75rem;
+  left: 0.75rem;
+  border-top-width: 2px;
+  border-left-width: 2px;
+  border-top-left-radius: 0.5rem;
+}
+.neolenz-bracket[data-pos="tr"] {
+  top: 0.75rem;
+  right: 0.75rem;
+  border-top-width: 2px;
+  border-right-width: 2px;
+  border-top-right-radius: 0.5rem;
+}
+.neolenz-bracket[data-pos="bl"] {
+  bottom: 0.75rem;
+  left: 0.75rem;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+  border-bottom-left-radius: 0.5rem;
+}
+.neolenz-bracket[data-pos="br"] {
+  bottom: 0.75rem;
+  right: 0.75rem;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+  border-bottom-right-radius: 0.5rem;
+}
+
+@keyframes neolenz-bracket {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(0.94);
+    opacity: 0.55;
+  }
+}
+
+/* ---------- Indeterminate progress ---------- */
+
+.neolenz-indeterminate {
+  position: relative;
+  overflow: hidden;
+}
+.neolenz-indeterminate::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--neolenz-cyan, var(--ring)),
+    transparent
+  );
+  animation: neolenz-indeterminate 1.4s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes neolenz-indeterminate {
+  from {
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    transform: translate3d(250%, 0, 0);
+  }
+}
+
+/* ---------- Reduced motion: keep the cues, drop the movement ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .neolenz-scan-beam {
+    animation: none;
+    transform: translate3d(0, 150%, 0);
+  }
+  .neolenz-bracket {
+    animation: none;
+  }
+  .neolenz-indeterminate::after {
+    animation: none;
+    width: 100%;
+    opacity: 0.4;
+    transform: none;
+  }
+}

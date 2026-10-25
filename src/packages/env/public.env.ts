@@ -5,7 +5,7 @@ import { parseEnv } from "../utils/parse-env";
 // Public Environment Schema
 const parsedEnvSchema = z.object({
   // App
-  NEXT_PUBLIC_APP_NAME: z.string().trim().min(1).default("@frenzzofficial"),
+  NEXT_PUBLIC_APP_NAME: z.string().trim().min(1).default("Neolenz"),
 
   NEXT_PUBLIC_APP_VERSION: z.string().trim().min(1).default("2.0.0"),
 
@@ -14,7 +14,7 @@ const parsedEnvSchema = z.object({
     .trim()
     .min(1)
     .default(
-      "Future-ready 2026 frontend template for creating robust, enterprise-level web applications.",
+      "Neolenz turns any image into structured, usable information: text, fields, tables and objects.",
     ),
 
   // Site
@@ -24,21 +24,17 @@ const parsedEnvSchema = z.object({
     .string()
     .trim()
     .min(1)
-    .default("Top 1% Frontend Template of 2026"),
+    .default("Neolenz: AI image intelligence"),
 
   NEXT_PUBLIC_LOGO_URL: z.string().trim().min(1).default("/logo.png"),
 
   NEXT_PUBLIC_OG_IMAGE_URL: z.string().trim().optional(),
 
   // Theme
-  NEXT_PUBLIC_ACTIVE_STYLE: z
-    .enum(STYLES_THEME_NAMES)
-    .default("cyantrix-theme"),
+  NEXT_PUBLIC_ACTIVE_STYLE: z.enum(STYLES_THEME_NAMES).default("neolenz-theme"),
 
   // Theme
-  NEXT_PUBLIC_ACTIVE_THEME: z
-    .enum(["system", "light", "dark"])
-    .default("system"),
+  NEXT_PUBLIC_ACTIVE_THEME: z.enum(["system", "light", "dark"]).default("dark"),
 
   // Social
   NEXT_PUBLIC_TWITTER: z

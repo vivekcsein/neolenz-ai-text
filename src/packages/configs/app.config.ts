@@ -24,7 +24,7 @@ const appConfig = {
     ogImage: envPublicConfig.OG_IMAGE_URL,
     theme: envPublicConfig.ACTIVE_THEME,
     style: envPublicConfig.ACTIVE_STYLE,
-    titleTemplate: "%s | Next Template",
+    titleTemplate: "%s | Neolenz",
   },
 
   // Author
@@ -61,8 +61,8 @@ const appConfig = {
   // Repository / Git
   repository: {
     repositoryName: envPublicConfig.AUTHOR_NAME,
-    repositoryUrl: `https://github.com/${envPublicConfig.AUTHOR_HANDLE}/create-next-template/`,
-    imageUrl: `https://raw.githubusercontent.com/${envPublicConfig.AUTHOR_HANDLE}/create-next-template/refs/heads/main/public/`,
+    repositoryUrl: `https://github.com/${envPublicConfig.AUTHOR_HANDLE}/neolenz-ai-text/`,
+    imageUrl: `https://raw.githubusercontent.com/${envPublicConfig.AUTHOR_HANDLE}/neolenz-ai-text/refs/heads/main/public/`,
   },
 
   // Search Engine Verification

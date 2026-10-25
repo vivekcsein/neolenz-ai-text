@@ -36,6 +36,23 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
+  /* Neolenz feature tokens. Fallbacks keep other themes usable. */
+  --color-neolenz-blue: var(--neolenz-blue, var(--primary));
+  --color-neolenz-violet: var(--neolenz-violet, var(--accent));
+  --color-neolenz-cyan: var(--neolenz-cyan, var(--ring));
+  --color-neolenz-panel: var(--neolenz-panel, var(--card));
+  --color-neolenz-panel-2: var(--neolenz-panel-2, var(--secondary));
+  --color-neolenz-result: var(--neolenz-result-surface, var(--card));
+  --color-neolenz-result-foreground: var(
+    --neolenz-result-foreground,
+    var(--card-foreground)
+  );
+  --color-neolenz-result-muted: var(
+    --neolenz-result-muted,
+    var(--muted-foreground)
+  );
+  --color-neolenz-result-border: var(--neolenz-result-border, var(--border));
+
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);

@@ -17,7 +17,10 @@ const legacyCopy = (text: string): boolean => {
   }
 };
 
-/** Copies text; `copied` flips true for `resetMs` so buttons can confirm. */
+/**
+ * Copies text; `copied` flips true for `resetMs` so buttons can confirm.
+ * `copy` resolves `true` on success and `false` on failure.
+ */
 export const useCopyToClipboard = (resetMs = 2000) => {
   const [copied, setCopied] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
@@ -34,10 +37,11 @@ export const useCopyToClipboard = (resetMs = 2000) => {
         ok = legacyCopy(text);
       }
 
-      if (!ok) return;
+      if (!ok) return false;
       setCopied(true);
       clearTimeout(timer.current);
       timer.current = setTimeout(() => setCopied(false), resetMs);
+      return true;
     },
     [resetMs],
   );

@@ -27,6 +27,14 @@ export type StyleTheme = {
 // REGISTER YOUR OWN THEMES HERE
 export const STYLE_THEMES = [
   {
+    name: "neolenz-theme",
+    label: "Neolenz",
+    type: "custom-theme",
+    description: "Deep navy with electric-blue, violet and cyan accents",
+    fonts: [fontsConfig.sans, fontsConfig.serif, fontsConfig.mono],
+    src: "@/styles/themes/custom-themes/neolenz-theme.css",
+  },
+  {
     name: "cosmic-night",
     label: "Cosmic Night",
     type: "custom-theme",
